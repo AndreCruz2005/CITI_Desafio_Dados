@@ -15,6 +15,8 @@ def fix_grades():
     for i in range(100):
         TABLE.at[i, 'nota_matematica'] = TABLE.at[i, 'nota_matematica'].replace(".", ",")
         TABLE.at[i, 'nota_portugues'] = TABLE.at[i, 'nota_portugues'].replace(".", ",")
+        TABLE.at[i, 'frequencia'] = str(TABLE.at[i, 'frequencia']).replace(".", ",")
+        TABLE.at[i, 'media'] = str(TABLE.at[i, 'media']).replace(".", ",")
 
 def add_columns():
     for i in range(100):
@@ -109,10 +111,10 @@ def top_attendance():
 
 if __name__ == "__main__":
     fix_sex()
-    fix_grades()
     add_columns()
     approval_chart()
     sex_chart()
     top_grades()
     top_attendance()
+    fix_grades()
     TABLE.to_csv("tabela_padronizada.csv", index=False)
