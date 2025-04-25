@@ -28,7 +28,7 @@ def approval_chart():
     approved = list(TABLE['aprovado']).count("Sim")
     failed = list(TABLE['aprovado']).count("Não")
     
-    plt.pie((approved, failed), labels=('Aprovado', 'Reprovado'), colors=('#0fd408', '#e34444'), autopct='%1.1f%%', wedgeprops={'edgecolor': 'black', 'linewidth': 1}, startangle=210)
+    plt.pie((approved, failed), labels=(f'Aprovado - {approved}', f'Reprovado - {failed}'), colors=('#0fd408', '#e34444'), autopct='%1.1f%%', wedgeprops={'edgecolor': 'black', 'linewidth': 1}, startangle=210)
     plt.title("SITUAÇÃO DOS ALUNOS", fontsize=23)
     plt.savefig('approval_chart.png')
     plt.clf()
