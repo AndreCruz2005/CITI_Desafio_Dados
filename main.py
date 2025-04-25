@@ -28,7 +28,8 @@ def approval_chart():
     approved = list(TABLE['aprovado']).count("Sim")
     failed = list(TABLE['aprovado']).count("Não")
     
-    plt.pie((approved, failed), labels=('Aprovado', 'Reprovado'), autopct='%1.1f%%')
+    plt.pie((approved, failed), labels=('Aprovado', 'Reprovado'), colors=('#0fd408', '#e34444'), autopct='%1.1f%%', wedgeprops={'edgecolor': 'black', 'linewidth': 1}, startangle=210)
+    plt.title("SITUAÇÃO DOS ALUNOS", fontsize=23)
     plt.savefig('approval_chart.png')
     plt.clf()
     
@@ -36,7 +37,8 @@ def sex_chart():
     masculine = list(TABLE['sexo']).count("Masculino")
     feminine = list(TABLE['sexo']).count("Feminino")
     
-    plt.pie((masculine, feminine), labels=('Masculino', 'Feminino'), autopct='%1.1f%%')
+    plt.pie((masculine, feminine), labels=('Masculino', 'Feminino'), colors=('skyblue', 'pink'), autopct='%1.1f%%', wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+    plt.title("DEMOGRAFIA DOS ALUNOS", fontsize=23)
     plt.savefig('sex_chart.png')
     plt.clf()
 
@@ -62,6 +64,8 @@ def top_grades():
            
         plt.text(value+0.05, bar.get_y() + 0.3, f'{value:.1f}', va='center', ha='left')
     
+    plt.title("RANKING DE NOTAS" , fontsize=23)
+    
     # Legend
     plot[99].set_label("Top 5")
     plt.legend(fontsize=25)
@@ -69,7 +73,6 @@ def top_grades():
     # Finish
     plt.savefig('grade_ranking.png')
     plt.clf()
-    
     
 def top_attendance():
     ids = TABLE['id_aluno']
@@ -93,7 +96,7 @@ def top_attendance():
            
         plt.text(value+0.06, bar.get_y() + 0.3, f'{value:.1f}%', va='center', ha='left')
     
-    
+    plt.title("RANKING DE PRESENÇA" , fontsize=23)
     
     # Legend
     plot[99].set_label("Top 5")
